@@ -1,0 +1,70 @@
+table {
+    width: 100%;
+    margin-top: 10px;
+
+    border-spacing: 0;
+
+    border: 1px solid #278bc4;
+    border-radius: 3px;
+}
+
+table th {
+    color: #fff;
+    background: #278bc4;
+}
+
+table th a {
+    color: #fff;
+}
+
+table th a:hover {
+    color: #fff;
+}
+
+table td {
+    font-size: 13px;
+}
+
+table th,
+table td {
+    margin: 0;
+    padding: 6px;
+}
+
+table tr:nth-child(even) {
+    background: #edf3f7;
+}
+
+table th.action-column {
+    background: rgb(203, 75, 70);
+}
+
+.movies{
+    display: none;
+}
+.movies.active{
+    display: block;
+}
+
+.name_actor{
+    background-color: #4CAF50; /* Green */
+    width: 10%;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  font-size: 16px;
+    border-bottom: #278bc4 1px solid;
+}
+
+
+
+
+.overw{
+    display: none;
+}
+.overw.visible{
+    display: block;
+}

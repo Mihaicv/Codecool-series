@@ -1,0 +1,8 @@
+
+.form_commentJS{
+    display: none;
+}
+
+.form_commentJS.visible{
+    display:block;
+}

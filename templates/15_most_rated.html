@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+{% block most_rated %}
+<head>
+    <meta charset="UTF-8">
+    <title>15 most rated</title>
+</head>
+<body>
+        <table class="table">
+                <tr>
+                    <th>Title</th>
+                    <th>Year</th>
+                    <th>Runtime</th>
+                    <th> Rating</th>
+                    <th>Genres</th>
+                    <th colspan="2">URLs</th>
+                </tr>
+            {% for movie in most_rated %}
+                <tr>
+                    <td><a href="/show/{{ movie.id }}"> {{ movie.title }}</a></td>
+                    <td>{{ movie.year }}</td>
+                    <td>{{ movie.runtime }}</td>
+                    <td>{{ movie.rating }}</td>
+                    <td>{{ movie.string_agg}}</td>
+                     {% if movie.trailer== none %}
+                         <td> {{ 'No URL trailer' }}</td>
+                            {% else %}
+                         <td> <a href="{{ movie.trailer }}">Trailer</a></td>
+                        {% endif %}
+                    {% if movie.homepage == none %}
+                         <td> {{ 'No URL homepage' }}</td>
+                            {% else %}
+                    <td> <a href="{{ movie.homepage }}">Homepage</a></td>
+                        {% endif %}
+                </tr>
+
+            {% endfor %}
+        </table>
+        <div class="text-center">
+                    <div class="inner">
+                         <a href="{{url_for('previous_page')}}"> << </a>
+
+                            {{ active_page }}
+
+                        <a href="{{url_for('next_page')}}">   >> </a>
+                    </div>
+                </div>
+
+
+
+</body>
+</html>
+
+{% endblock %}

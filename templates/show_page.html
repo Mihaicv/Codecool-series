@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+{% block show_page %}
+<body>
+<div class="card detailed-view">
+            {% for detail in show %}
+            <p>And here is a "detailed" kind of view:</p>
+            <div class="row">
+                <img src=""
+                     class="poster col col-third">
+                <div class="col col-twothird">
+                    <h2>{{ detail.title }}</h2>
+                    <p class="small grayed">{{ detail.runtime }}min<span class="separator">|</span> {{ detail.string_agg}} <span
+                            class="separator">|</span> {{ detail.year}}</p>
+                    <p>{{ detail.overview }}</p>
+
+                    <small><button id="bt_edit_overview">Edit overview</button></a></small>
+                    <div class="overw">
+                         <textarea class="textarea_overview" id="{{ detail.id }}">{{ detail.overview }}</textarea>
+                        <button class="submit_edit_ow" type="submit">Send</button>
+                    </div>
+                </div>
+            </div>
+                {% if detail.id != id_user_favorites %}
+                <small><button type="button" id="bt_add_favorite"><a href="/add_favorite/{{ detail.id}}">Add to Favorite</button></a></small>
+                {% endif %}
+
+            <div class="card show_comment">
+                    <button class="add_comment_js"> Add comment js</button>
+                    <div class="form_commentJS"">
+                        <textarea id="{{ detail.id}}" name="textarea" class="text" placeholder="add commentJS"></textarea>
+                        <small><button id='save_btn'type="submit">Send</button></small>
+
+                    </div>
+            </div>
+                    <b>Stars:</b>
+               {% for actor in top_3_actors_from_movie %}
+                   {{ actor.name}},
+                   {% endfor %}
+
+            </div>
+            <div class="card">
+
+                <form action="/add_comment/{{ detail.id}}" method="post">
+                    <label for="comment">Comment</label><br>
+                    <textarea id="comment" name="comment" placeholder="add comment"></textarea>
+                    <small><button type="submit">Send</button></small>
+                </form>
+            {% for comment in comments %}
+                <ul>
+                <li>{{ comment.message }}</li>
+                </ul>
+                {% endfor %}
+            </div>
+
+<div class="card">
+        <table class="table">
+                <tr>
+                    <th>Season Title</th>
+                    <th>Overview</th>
+                    <th>Number of episodes</th>
+                </tr>
+            {% for show in season_movie %}
+                <tr>
+                    <td>{{ show.title }}</td>
+                    <td>{{ show.overview}}</td>
+                    <td>{{ show.count }}</td>
+                </tr>
+                 {% endfor %}
+        </table>
+
+</div>
+
+    {% endfor %}
+        </div>
+
+
+</body>
+{% endblock %}

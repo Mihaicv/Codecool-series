@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+ {% block favorite %}
+
+<body>
+        <div class=card>
+
+            {% for show in favorite_show %}
+
+                <a href="/show/{{ show.id}}">{{ show.title }}</a><br>
+            {% endfor %}
+        </div>
+</body>
+
+{% endblock %}

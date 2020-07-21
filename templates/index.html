@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block index %}
+
+
+<body>
+    <a href="/shows/most-rated">Most 15 rated</a>
+    <ul>
+    {% for show in shows %}
+        <li>
+       <a href="/show/{{ show.id}}" >{{ show.title }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+{% endblock %}
